@@ -113,11 +113,20 @@ class Sll:
     def sort(self):
         for Pass in range(1,len(self)):
             for i in range(len(self)-Pass):
-                if self[i].get_data()<self[i+1].get_data():
+                if self[i].get_data()>self[i+1].get_data():
                     a=self[i].get_data()
                     self[i].set_data(self[i+1].get_data())
                     self[i+1].set_data(a)
-        return(self)
+    
+    def __str__(self):
+        result=''
+        ptr=self.head
+        while ptr!=None:
+            result+=str(ptr.get_data()) + ', '
+            ptr=ptr.get_add()
+        result=result.strip(', ')
+        return '['+result+']'
+
 
         
         
@@ -138,11 +147,15 @@ print()
 # print(s1[2])
 # s1.insert(2)
 # s1.display()
-s1.del_first()
+# s1.del_first()
+# s1.display()
+# print()
+# s1.del_last()
+# s1.display()
+# print()
+# s1.remove(3)
+# s1.display()
+print(s1.sort())
 s1.display()
 print()
-s1.del_last()
-s1.display()
-print()
-s1.remove(3)
-s1.display()
+print(s1)
