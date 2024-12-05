@@ -128,6 +128,15 @@ class Dll:
             del ptr
 
 
+    def reverse(self):
+        i=0
+        j=len(self)-1
+        while i<j:
+            a,b=self[i].get_data(),self[j].get_data()
+            self[i],self[j]=b,a
+            i+=1
+            j-=1
+
     def sort(self):
         for Pass in range(1,len(self)):
             for i in range(len(self)-Pass):
@@ -160,5 +169,6 @@ print(o1)
 # print(o1)
 # o1.remove(3)
 # print(o1)
-o1.sort()
+# o1.sort()
+o1.reverse()
 print(o1)
