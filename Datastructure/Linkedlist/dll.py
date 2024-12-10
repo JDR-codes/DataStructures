@@ -97,6 +97,9 @@ class Dll:
     def Del_first(self):
         if self.head==None:
             raise IndexError
+        elif self.head==self.tail:
+            self.head=None
+            self.tail=None
         else:
             ptr=self.head
             self.head=ptr.get_next()
