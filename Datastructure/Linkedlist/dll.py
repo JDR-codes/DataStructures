@@ -78,15 +78,15 @@ class Dll:
     def __setitem__(self,index,new):
         self[index].set_data(new) 
 
-    def insert(self,index):
+    def insert(self,index,val):
         if index==0:
-            self.Add_first(eval(input('Enter data:')))
+            self.Add_first(val)
             self.head=node
         elif index>=len(self)-1:
-            self.Add_last(eval(input('Enter data:')))
+            self.Add_last(val)
             self.tail=node
         else:
-            node=self.Create_node(eval(input('Enter data:')))
+            node=self.Create_node(val)
             prev=self[index-1]
             next=self[index]
             prev.set_next(node)

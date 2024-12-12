@@ -27,7 +27,7 @@ class SCLL:
     def __str__(self):
         res=''
         ptr=self.head
-        while True:
+        while ptr!=None:
             res+=str(ptr.data) + ','
             ptr=ptr.add
             if ptr==self.head:
@@ -41,9 +41,7 @@ class SCLL:
             self.head=node
             node.add=self.head
         else:
-            ptr=self.head
-            while ptr.add!=self.head:
-                ptr=ptr.add
+            ptr=self[-1]
             ptr.add=node
             node.add=self.head    
     def __getitem__(self,index):
@@ -64,6 +62,8 @@ class SCLL:
         self[index].data=new
 
     def __len__(self):
+        if self.head==None:
+            return 0
         count=0
         ptr=self.head
         while True:
@@ -89,9 +89,15 @@ class SCLL:
     def Del_first(self):
         if self.head==None:
             raise IndexError
+        elif len(self)==1:
+            ptr=self.head
+            self.head=None
+            print(ptr.data)
+            del ptr
+        
         else:
             ptr=self.head
-            last=self[len(self)-1]
+            last=self[-1]
             last.add=self.head.add
             self.head=self.head.add
             print(ptr.data)
@@ -100,30 +106,39 @@ class SCLL:
     def Del_last(self):
         if self.head==None:
             raise IndexError
+        elif len(self)==1:
+            ptr=self.head
+            self.head=None
+            print(ptr.data)
+            del ptr
         else:
-            ptr=self[len(self)-1]
-            last=self[len(self)-2]
+            ptr=self[-1]
+            last=self[-2]
             last.add=self.head
             print(ptr.data)
             del ptr
 
 o1=SCLL()
 o1.Add_first(10)
-o1.Add_first(20)
-o1.Add_first(30)
-o1.Add_first(40)
-o1.Add_last(60)
-o1.Add_last(70)
-print(o1)
-# print(o1[0])
-o1[2]=50
-print(o1)
-print(len(o1))
-o1.insert(2,90)
-print(o1)
-o1.Del_first()
-print(o1)
+# o1.Add_first(20)
+# o1.Add_first(30)
+# o1.Add_first(40)
+# o1.Add_last(60)
+# o1.Add_last(70)
+# print(o1)
+# # print(o1[0])
+# o1[2]=50
+# print(o1)
+# print(len(o1))
+# o1.insert(2,90)
+# print(o1)
 # o1.Del_first()
 # print(o1)
+# # o1.Del_first()
+# # print(o1)
+# o1.Del_last()
+# print(len(o1))
+# print(o1)
+
 o1.Del_last()
 print(o1)
