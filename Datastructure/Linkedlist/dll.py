@@ -140,6 +140,11 @@ class Dll:
             i+=1
             j-=1
 
+    def __contains__(self,val):
+        for i in range(len(self)):
+            if self[i].get_data()==val:
+                return True
+        return False
     def sort(self):
         for Pass in range(1,len(self)):
             for i in range(len(self)-Pass):

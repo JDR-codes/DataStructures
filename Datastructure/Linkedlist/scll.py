@@ -118,13 +118,58 @@ class SCLL:
             print(ptr.data)
             del ptr
 
+    def remove(self,index):
+        if index<0:
+            index+=len(self)
+        elif index==0:
+            self.Del_first()
+        elif index==len(self)-1:
+            self.Del_last()
+        elif index>len(self)-1:
+            raise IndexError
+        else:
+            ptr=self[index]
+            prev=self[index-1]
+            prev.add=ptr.add
+            print(ptr.data)
+            del ptr
+
+    def sort(self):
+        for Pass in range(1,len(self)):
+            min=Pass-1
+            for i in range(Pass,len(self)):
+                if self[i].data<self[min].data:
+                    min=i
+            self[Pass-1].data,self[min]=self[min].data,self[Pass-1].data
+
+    def __contains__(self,val):
+        for i in range(len(self)):
+            if self[i].data==val:
+                return True
+        return False
+    def bin_sec(self,val):
+        se=0
+        end=len(self)-1   
+        while se<=end:
+            min=len(self)//2 
+            if val==self[min].data:
+                return min
+            elif val>self[min].data:
+                se+=1
+            else:
+                end-=1
+        return -1
+
 o1=SCLL()
 o1.Add_first(10)
-# o1.Add_first(20)
-# o1.Add_first(30)
-# o1.Add_first(40)
+o1.Add_first(20)
+o1.Add_first(30)
+o1.Add_first(40)
 # o1.Add_last(60)
 # o1.Add_last(70)
+print(o1)
+
+# o1.remove(-1)
 # print(o1)
 # # print(o1[0])
 # o1[2]=50
@@ -134,11 +179,20 @@ o1.Add_first(10)
 # print(o1)
 # o1.Del_first()
 # print(o1)
-# # o1.Del_first()
-# # print(o1)
+# o1.Del_first()
+# print(o1)
 # o1.Del_last()
 # print(len(o1))
 # print(o1)
 
-o1.Del_last()
-print(o1)
+# o1.Del_last()
+# print(o1)
+
+# o1.remove(6)
+# print(o1)
+
+# o1.sort()
+# print(o1)
+
+# print(10 in o1)
+print(o1.bin_sec(20))
