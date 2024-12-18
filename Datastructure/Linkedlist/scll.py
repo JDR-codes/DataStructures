@@ -147,18 +147,7 @@ class SCLL:
             if self[i].data==val:
                 return True
         return False
-    def bin_sec(self,val):
-        se=0
-        end=len(self)-1   
-        while se<=end:
-            min=len(self)//2 
-            if val==self[min].data:
-                return min
-            elif val>self[min].data:
-                se+=1
-            else:
-                end-=1
-        return -1
+
 
 o1=SCLL()
 o1.Add_first(10)
@@ -175,8 +164,8 @@ print(o1)
 # o1[2]=50
 # print(o1)
 # print(len(o1))
-# o1.insert(2,90)
-# print(o1)
+o1.insert(2,90)
+print(o1)
 # o1.Del_first()
 # print(o1)
 # o1.Del_first()
@@ -195,4 +184,3 @@ print(o1)
 # print(o1)
 
 # print(10 in o1)
-print(o1.bin_sec(20))
